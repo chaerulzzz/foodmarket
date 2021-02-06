@@ -21,19 +21,53 @@ class GeneralPage extends StatelessWidget {
       body: Stack(
         children: [
           Container(),
-          SafeArea(child: Container(color: backColor ?? "FAFAFC".toColor(),)),
+          SafeArea(child: Container(color: backColor ?? Colors.white)),
           SafeArea(
             child: ListView(
               children: [
                 Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: defaultMargin),
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                       width: double.infinity,
                       height: 100,
                       color: Colors.white,
+                      child: Row(
+                        children: [
+                          onBackButtonPressed != null 
+                          ? Container(
+                              width: 24,
+                              height: 24,
+                              margin: EdgeInsets.only(right: 26),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage("assets/back_arrow.png")
+                                )
+                              ),
+                            )
+                          : SizedBox(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(title, 
+                                style: GoogleFonts.poppins(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500
+                                )
+                              ),
+                              Text(title, 
+                                style: GoogleFonts.poppins(
+                                  color: "8D92A3".toColor(),
+                                  fontWeight: FontWeight.w300
+                                )
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
+                    Container(height: defaultMargin, width: double.infinity, color: "FAFAFC".toColor()),
                     child ?? SizedBox()
                   ],
                 ),
