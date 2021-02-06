@@ -56,7 +56,7 @@ class GeneralPage extends StatelessWidget {
                                   fontWeight: FontWeight.w500
                                 )
                               ),
-                              Text(title, 
+                              Text(subtitle, 
                                 style: GoogleFonts.poppins(
                                   color: "8D92A3".toColor(),
                                   fontWeight: FontWeight.w300
