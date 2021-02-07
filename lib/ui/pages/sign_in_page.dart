@@ -20,7 +20,8 @@ class _SignInPageState extends State<SignInPage> {
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
-            child: Text('Email Address',
+            child: Text(
+              'Email Address',
               style: blackFontStyle2,
             ),
           ),
@@ -29,22 +30,21 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.black)
-            ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.black)),
             child: TextField(
               controller: emailController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: 'Type your email address'
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your email address'),
             ),
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
-            child: Text('Password',
+            child: Text(
+              'Password',
               style: blackFontStyle2,
             ),
           ),
@@ -53,52 +53,54 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.black)
-            ),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.black)),
             child: TextField(
-              controller: emailController,
+              controller: passwordController,
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintStyle: greyFontStyle,
-                hintText: 'Type your password'
-              ),
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: 'Type your password'),
             ),
           ),
           Container(
-            width: double.infinity,
-            height: 45,
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isLoading 
-              ? SpinKitFadingCircle(
-                  size: 45, color: mainColor
-                ) 
-              : RaisedButton(
-                onPressed: () {},
-                elevation: 0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                color: mainColor,
-                child: Text('Sign In', style: blackFontStyle3.copyWith(color: Colors.white),),
-              )
-          ),
+              width: double.infinity,
+              height: 45,
+              margin: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: isLoading
+                  ? SpinKitFadingCircle(size: 45, color: mainColor)
+                  : RaisedButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      color: mainColor,
+                      child: Text(
+                        'Sign In',
+                        style: blackFontStyle3.copyWith(color: Colors.black),
+                      ),
+                    )),
           Container(
-            width: double.infinity,
-            height: 45,
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isLoading 
-              ? SpinKitFadingCircle(
-                  size: 45, color: mainColor
-                ) 
-              : RaisedButton(
-                onPressed: () {},
-                elevation: 0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                color: greyColor,
-                child: Text('Create New Account', style: blackFontStyle3.copyWith(color: Colors.white),),
-              )
-          )
+              width: double.infinity,
+              height: 45,
+              margin: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: isLoading
+                  ? SpinKitFadingCircle(size: 45, color: mainColor)
+                  : RaisedButton(
+                      onPressed: () {
+                        Get.to(SignUpPage());
+                      },
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      color: greyColor,
+                      child: Text(
+                        'Create New Account',
+                        style: blackFontStyle3.copyWith(color: Colors.white),
+                      ),
+                    ))
         ],
       ),
     );
