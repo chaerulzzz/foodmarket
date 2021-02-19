@@ -30,7 +30,7 @@ List<Food> mockFoods = [
   description: "Sate Sayur Sultan adalah makanan terenak dan terkenal di Bandung. Sate ini dibuat dari berbagai macam bahan",
   ingredients: "Bawang merah, Paprika, Bawang bombay, Timun",
   price: 15000,
-  rate: 4.2
+  rate: 4.2,
 ),
 Food(
   id: 2,

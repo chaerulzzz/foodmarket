@@ -19,3 +19,4 @@ part 'address_page.dart';
 part 'main/main_page.dart';
 part 'main/food_page.dart';
 part 'main/food_detail_page.dart';
+part 'main/payment_page.dart';
