@@ -3,9 +3,9 @@ part of 'widgets.dart';
 class CustomTabBar extends StatelessWidget {
   final int selectedIndex;
   final List<String> titles;
-  final Function(int index) onTap;
+  final Function(int index)? onTap;
 
-  CustomTabBar({@required this.titles, this.selectedIndex = 0, this.onTap});
+  CustomTabBar({required this.titles, this.selectedIndex = 0, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class CustomTabBar extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                         if (onTap != null) {    
-                          onTap(titles.indexOf(e));
+                          onTap!(titles.indexOf(e));
                         }
                     },
                     child: Text(e, style: (titles.indexOf(e) == selectedIndex) 

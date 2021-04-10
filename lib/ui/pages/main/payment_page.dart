@@ -1,7 +1,7 @@
 part of '../pages.dart';
 
 class PaymentPage extends StatelessWidget {
-  final Transaction transaction;
+  final Transaction? transaction;
 
   PaymentPage({this.transaction});
 
@@ -35,7 +35,7 @@ class PaymentPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             image: DecorationImage(
-                              image: NetworkImage(transaction.food.picturePath), 
+                              image: NetworkImage(transaction!.food!.picturePath!), 
                               fit: BoxFit.cover)
                           ),
                         ),
@@ -44,7 +44,7 @@ class PaymentPage extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 2 * defaultMargin - 150,
-                              child: Text(transaction.food.name, 
+                              child: Text(transaction!.food!.name!, 
                                 style: blackFontStyle2,
                                 maxLines: 1,
                                 overflow: TextOverflow.clip,
@@ -54,14 +54,14 @@ class PaymentPage extends StatelessWidget {
                               locale: "id-ID",
                               decimalDigits: 0,
                               symbol: "Rp. "
-                            ).format(transaction.food.price),
+                            ).format(transaction!.food!.price),
                               style: greyFontStyle.copyWith(fontSize: 13)
                             )
                           ],
                         )
                       ],
                     ),
-                    Text("${transaction.quantity} item(s)")
+                    Text("${transaction!.quantity} item(s)")
                   ],
                 ),
                 Padding(
@@ -74,7 +74,7 @@ class PaymentPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
-                      child: Text(transaction.food.name, style: greyFontStyle),
+                      child: Text(transaction!.food!.name!, style: greyFontStyle),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
@@ -83,7 +83,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format(transaction.total),
+                        ).format(transaction!.total),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -127,7 +127,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format((transaction.total + 20000) / 100 * 10),
+                        ).format((transaction!.total! + 20000) / 100 * 10),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -149,7 +149,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format((transaction.total + (transaction.total + 20000) / 100 * 10)),
+                        ).format((transaction!.total! + (transaction!.total! + 20000) / 100 * 10)),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -181,7 +181,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction.user.name,
+                        transaction!.user!.name!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -199,7 +199,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction.user.phoneNumber,
+                        transaction!.user!.phoneNumber!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -217,7 +217,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction.user.address,
+                        transaction!.user!.address!,
                         style: blackFontStyle3,
                         maxLines: 1,
                         overflow: TextOverflow.clip,
@@ -237,7 +237,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction.user.houseNumber,
+                        transaction!.user!.houseNumber!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -255,7 +255,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction.user.city,
+                        transaction!.user!.city!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -282,7 +282,7 @@ class PaymentPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
-                      child: Text(transaction.id.toString(), style: greyFontStyle),
+                      child: Text(transaction!.id.toString(), style: greyFontStyle),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,

@@ -98,19 +98,18 @@ class _AddressPageState extends State<AddressPage> {
             ),
           ),
           Container(
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
-            child: DropdownButton(
-              isExpanded: true,
-              underline: SizedBox(),
-              items: _createItem(),
-              onChanged: (item) {},
-            )
-          ),
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.black)),
+              child: DropdownButton(
+                isExpanded: true,
+                underline: SizedBox(),
+                items: _createItem(),
+                onChanged: (dynamic item) {},
+              )),
           Container(
               width: double.infinity,
               height: 45,
@@ -133,11 +132,12 @@ class _AddressPageState extends State<AddressPage> {
   }
 
   List<DropdownMenuItem> _createItem() {
-    List<DropdownMenuItem> items = List();
+    List<DropdownMenuItem> items = [];
 
     items.add(DropdownMenuItem(child: Text("Bandung", style: blackFontStyle3)));
     items.add(DropdownMenuItem(child: Text("Jakarta", style: blackFontStyle3)));
-    items.add(DropdownMenuItem(child: Text("Surabaya", style: blackFontStyle3)));
+    items
+        .add(DropdownMenuItem(child: Text("Surabaya", style: blackFontStyle3)));
 
     return items;
   }

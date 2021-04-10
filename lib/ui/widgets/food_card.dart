@@ -26,7 +26,7 @@ class FoodCard extends StatelessWidget {
                 topRight: Radius.circular(8)
               ),
               image: DecorationImage(
-                image: NetworkImage(food.picturePath), fit: BoxFit.cover
+                image: NetworkImage(food.picturePath!), fit: BoxFit.cover
               )
             ),
           ),
@@ -34,7 +34,7 @@ class FoodCard extends StatelessWidget {
             margin: EdgeInsets.fromLTRB(12, 12, 12, 6),
             width: 200,
             child: Text(
-              food.name,
+              food.name!,
               style: blackFontStyle2,
               maxLines: 1,
               overflow: TextOverflow.clip,

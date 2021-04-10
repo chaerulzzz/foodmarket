@@ -1,13 +1,13 @@
 part of 'widgets.dart';
 
 class RatingStars extends StatelessWidget {
-  final double rate;
+  final double? rate;
 
   RatingStars({this.rate = 0});
 
   @override
   Widget build(BuildContext context) {
-    int numberOfStars = rate.round();
+    int numberOfStars = rate!.round();
     return Row(
       children: List<Widget>.generate(
         5,
