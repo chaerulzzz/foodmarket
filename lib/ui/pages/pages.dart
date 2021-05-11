@@ -15,6 +15,7 @@ part 'general_page.dart';
 part 'sign_in_page.dart';
 part 'sign_up_page.dart';
 part 'address_page.dart';
+part 'illustration_page.dart';
 
 part 'main/main_page.dart';
 part 'main/food_page.dart';
