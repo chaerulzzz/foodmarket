@@ -54,7 +54,7 @@ class IllustrationPage extends StatelessWidget {
                 primary: '8D92A3'.toColor(),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
-              child: Text(buttonTitle2!, style: blackFontStyle3.copyWith(fontWeight: FontWeight.w500)),
+              child: Text(buttonTitle2!, style: blackFontStyle3.copyWith(color: Colors.white, fontWeight: FontWeight.w500)),
             ),
           )
         ],
