@@ -44,7 +44,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Center(
-                  child: Text("Profile"),
+                  child: ProfilePage(),
                 )
               ],
             )
