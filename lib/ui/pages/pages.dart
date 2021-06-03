@@ -9,6 +9,7 @@ import 'package:foodmarket/ui/widgets/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
 
 part 'general_page.dart';
@@ -24,3 +25,4 @@ part 'main/main_page.dart';
 part 'main/food_page.dart';
 part 'main/food_detail_page.dart';
 part 'main/payment_page.dart';
+part 'main/profile_page.dart';
