@@ -6,12 +6,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool isLoading = false;
-
     return GeneralPage(
       title: 'Sign In',
       subtitle: 'Find your best ever meal',
@@ -69,13 +69,29 @@ class _SignInPageState extends State<SignInPage> {
               margin: EdgeInsets.only(top: 20),
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: isLoading
-                  ? SpinKitFadingCircle(size: 45, color: mainColor)
-                  : RaisedButton(
-                      onPressed: () {},
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      color: mainColor,
+                  ? loadingIndicator
+                  : ElevatedButton(
+                      onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        await context.read<UserCubit>().signIn(emailController.text, passwordController.text);
+                        UserState state = context.read<UserCubit>().state;
+
+                        //TODO tambahkan validasi jika login gagal
+                        if (state is UserLoaded) {
+                          context.read<TransactionCubit>().getTransactions();
+                          context.read<FoodCubit>().getFoods();
+                          Get.to(MainPage());
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        primary: mainColor,
+                      ),
                       child: Text(
                         'Sign In',
                         style: blackFontStyle3.copyWith(color: Colors.black),
@@ -87,15 +103,15 @@ class _SignInPageState extends State<SignInPage> {
               margin: EdgeInsets.only(top: 20),
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: isLoading
-                  ? SpinKitFadingCircle(size: 45, color: mainColor)
-                  : RaisedButton(
-                      onPressed: () {
-                        Get.to(SignUpPage());
-                      },
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      color: greyColor,
+                  ? loadingIndicator
+                  : ElevatedButton(
+                      onPressed: () => Get.to(SignUpPage()),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        primary: greyColor,
+                      ),
                       child: Text(
                         'Create New Account',
                         style: blackFontStyle3.copyWith(color: Colors.white),

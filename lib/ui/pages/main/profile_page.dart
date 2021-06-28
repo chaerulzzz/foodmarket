@@ -35,18 +35,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   margin: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(image: AssetImage("assets/profile.png"), fit: BoxFit.cover),
+                    image: DecorationImage(
+                      image: NetworkImage((context.read<UserCubit>().state as UserLoaded).user.picturePath!), 
+                      fit: BoxFit.cover),
                   ),
                 ),
               ),
               Container(
                   margin: EdgeInsets.only(top: 16, bottom: 6),
                   child: Text(
-                    "Chaerul Anwar",
+                    (context.read<UserCubit>().state as UserLoaded).user.name!,
                     style: blackFontStyle2.copyWith(fontWeight: FontWeight.w600),
                   )),
               Text(
-                "chaerulforpc@gmail.com",
+                (context.read<UserCubit>().state as UserLoaded).user.email!,
                 style: greyFontStyle.copyWith(fontSize: 14),
               )
             ],

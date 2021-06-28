@@ -10,8 +10,8 @@ class _FoodPageState extends State<FoodPage> {
 
   @override
   Widget build(BuildContext context) {
-    double listItemWidth =
-        MediaQuery.of(context).size.width - 2 * defaultMargin;
+    double listItemWidth = MediaQuery.of(context).size.width - 2 * defaultMargin;
+    
     return ListView(
       children: [
         Column(
@@ -38,11 +38,10 @@ class _FoodPageState extends State<FoodPage> {
                     width: 50,
                     height: 50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg"),
-                            fit: BoxFit.cover)),
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        image: NetworkImage((context.read<UserCubit>().state as UserLoaded).user.picturePath!),
+                        fit: BoxFit.cover)),
                   ),
                 ],
               ),
@@ -59,7 +58,14 @@ class _FoodPageState extends State<FoodPage> {
                               padding: EdgeInsets.only(
                                   left: (e == mockFoods[0]) ? defaultMargin : 0,
                                   right: defaultMargin),
-                              child: FoodCard(e),
+                              child: GestureDetector(
+                                onTap: () => Get.to(FoodDetailPage(transaction: Transaction(
+                                  food: e,
+                                  user: (context.read<UserCubit>().state as UserLoaded).user
+                                ),
+                                onBackButtonPressed: () => Get.back(),
+                                )),
+                                child: FoodCard(e)),
                             ))
                         .toList(),
                   )
