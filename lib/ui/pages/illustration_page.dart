@@ -6,8 +6,8 @@ class IllustrationPage extends StatelessWidget {
   final String picturePath;
   final String buttonTitle1;
   final String? buttonTitle2;
-  final Function buttonTap1;
-  final Function? buttonTap2;
+  final VoidCallback buttonTap1;
+  final VoidCallback? buttonTap2;
 
   IllustrationPage(
       {required this.title,
@@ -37,7 +37,7 @@ class IllustrationPage extends StatelessWidget {
             width: 200,
             height: 45,
             child: ElevatedButton(
-              onPressed: () => buttonTap1,
+              onPressed: buttonTap1,
               style: ElevatedButton.styleFrom(
                 primary: mainColor,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -49,7 +49,7 @@ class IllustrationPage extends StatelessWidget {
             width: 200,
             height: 45,
             child: ElevatedButton(
-              onPressed: () => buttonTap2!,
+              onPressed: buttonTap2,
               style: ElevatedButton.styleFrom(
                 primary: '8D92A3'.toColor(),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

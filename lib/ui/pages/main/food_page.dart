@@ -60,7 +60,7 @@ class _FoodPageState extends State<FoodPage> {
                                     left: (e == mockFoods[0]) ? defaultMargin : 0,
                                     right: defaultMargin),
                                 child: GestureDetector(
-                                  onTap: () => Get.to(FoodDetailPage(transaction: Transaction(
+                                  onTap: () => Get.to(() => FoodDetailPage(transaction: Transaction(
                                     food: e,
                                     user: (context.read<UserCubit>().state as UserLoaded).user
                                   ),

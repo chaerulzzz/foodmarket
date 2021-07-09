@@ -1,9 +1,16 @@
 part of '../pages.dart';
 
-class PaymentPage extends StatelessWidget {
+class PaymentPage extends StatefulWidget {
   final Transaction? transaction;
 
   PaymentPage({this.transaction});
+
+  @override
+  _PaymentPageState createState() => _PaymentPageState();
+}
+
+class _PaymentPageState extends State<PaymentPage> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class PaymentPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             image: DecorationImage(
-                              image: NetworkImage(transaction!.food!.picturePath!), 
+                              image: NetworkImage(widget.transaction!.food!.picturePath!), 
                               fit: BoxFit.cover)
                           ),
                         ),
@@ -44,7 +51,7 @@ class PaymentPage extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 2 * defaultMargin - 150,
-                              child: Text(transaction!.food!.name!, 
+                              child: Text(widget.transaction!.food!.name!, 
                                 style: blackFontStyle2,
                                 maxLines: 1,
                                 overflow: TextOverflow.clip,
@@ -54,14 +61,14 @@ class PaymentPage extends StatelessWidget {
                               locale: "id-ID",
                               decimalDigits: 0,
                               symbol: "Rp. "
-                            ).format(transaction!.food!.price),
+                            ).format(widget.transaction!.food!.price),
                               style: greyFontStyle.copyWith(fontSize: 13)
                             )
                           ],
                         )
                       ],
                     ),
-                    Text("${transaction!.quantity} item(s)")
+                    Text("${widget.transaction!.quantity} item(s)")
                   ],
                 ),
                 Padding(
@@ -74,7 +81,7 @@ class PaymentPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
-                      child: Text(transaction!.food!.name!, style: greyFontStyle),
+                      child: Text(widget.transaction!.food!.name!, style: greyFontStyle),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
@@ -83,7 +90,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format(transaction!.total),
+                        ).format(widget.transaction!.total),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -105,7 +112,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format(20000),
+                        ).format(3000),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -127,7 +134,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format((transaction!.total! + 20000) / 100 * 10),
+                        ).format((widget.transaction!.total! + 3000) / 100 * 10),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -149,7 +156,7 @@ class PaymentPage extends StatelessWidget {
                           locale: "id-ID",
                           decimalDigits: 0,
                           symbol: "Rp. "
-                        ).format((transaction!.total! + (transaction!.total! + 20000) / 100 * 10)),
+                        ).format((widget.transaction!.total! + (widget.transaction!.total! + 3000) / 100 * 10) + 3000),
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -181,7 +188,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction!.user!.name!,
+                        widget.transaction!.user!.name!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -199,7 +206,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction!.user!.phoneNumber!,
+                        widget.transaction!.user!.phoneNumber!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -217,7 +224,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction!.user!.address!,
+                        widget.transaction!.user!.address!,
                         style: blackFontStyle3,
                         maxLines: 1,
                         overflow: TextOverflow.clip,
@@ -237,7 +244,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction!.user!.houseNumber!,
+                        widget.transaction!.user!.houseNumber!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -255,7 +262,7 @@ class PaymentPage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
                       child: Text(
-                        transaction!.user!.city!,
+                        widget.transaction!.user!.city!,
                         style: blackFontStyle3,
                         textAlign: TextAlign.end,
                       ),
@@ -265,52 +272,91 @@ class PaymentPage extends StatelessWidget {
               ]
             )
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: defaultMargin),
-            padding: EdgeInsets.symmetric(horizontal: defaultMargin, vertical: 16),
-            color: Colors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 16, bottom: 8),
-                  child: Text("Order Status", style: blackFontStyle3),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
-                      child: Text(transaction!.id.toString(), style: greyFontStyle),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
-                      child: Text(
-                        "Success",
-                        style: blackFontStyle3.copyWith(color: Colors.green, fontWeight: FontWeight.w600),
-                        textAlign: TextAlign.end,
+          // Container(
+          //   margin: EdgeInsets.only(bottom: defaultMargin),
+          //   padding: EdgeInsets.symmetric(horizontal: defaultMargin, vertical: 16),
+          //   color: Colors.white,
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Padding(
+          //         padding: EdgeInsets.only(top: 16, bottom: 8),
+          //         child: Text("Order Status", style: blackFontStyle3),
+          //       ),
+          //       Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           SizedBox(
+          //             width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
+          //             child: Text(widget.transaction!.id.toString(), style: greyFontStyle),
+          //           ),
+          //           SizedBox(
+          //             width: MediaQuery.of(context).size.width / 2 - defaultMargin - 5,
+          //             child: Text(
+          //               "Success",
+          //               style: blackFontStyle3.copyWith(color: Colors.green, fontWeight: FontWeight.w600),
+          //               textAlign: TextAlign.end,
+          //             ),
+          //           )
+          //         ],
+          //       ),
+          //     ]
+          //   )
+          // ),
+          (isLoading) 
+            ? Center(child: loadingIndicator) 
+            : Container(
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              height: 45,
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
+
+                  bool result = await context.read<TransactionCubit>().submitTransactions(widget.transaction!.copyWith(
+                    dateTime: DateTime.now(),
+                    total: (widget.transaction!.total! + (widget.transaction!.total! + 20000) / 100 * 10).toInt()
+                  ));
+
+                  if (result) {
+                    Get.to(() => SuccessOrderPage());
+                  } else {
+                    setState(() {
+                      isLoading = false;
+                    });
+
+                    Get.snackbar("", "",
+                      backgroundColor: "D9435E".toColor(),
+                      icon: Icon(MdiIcons.closeCircleOutline, 
+                        color: Colors.white),
+                      titleText: Text(
+                        "Transaction Failed", 
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600
+                        )
                       ),
-                    )
-                  ],
+                      messageText: Text(
+                        "Please try again later",
+                        style: GoogleFonts.poppins(color: Colors.white)
+                      )
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  primary: mainColor,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-              ]
+                child: Text(
+                  "Checkout Now",
+                  style: blackFontStyle3.copyWith(fontWeight: FontWeight.w500)
+                ),
+              ),
             )
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width - 2 * defaultMargin,
-            margin: EdgeInsets.fromLTRB(defaultMargin, 0, defaultMargin, 16),
-            padding: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
-              color: errorColor,
-              borderRadius: BorderRadius.circular(8)
-            ),
-            child: Text(
-              "Cancel My Order",
-              style: blackFontStyle3.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.center,
-            ),
-          ),
         ],
       ),
     );

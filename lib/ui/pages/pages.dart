@@ -11,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:get/get.dart';
 
 part 'general_page.dart';

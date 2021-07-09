@@ -113,7 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: RaisedButton(
                 onPressed: () {
-                  Get.to(AddressPage());
+                  Get.to(() => AddressPage());
                 },
                 elevation: 0,
                 shape: RoundedRectangleBorder(
