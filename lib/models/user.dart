@@ -10,28 +10,47 @@ class User extends Equatable {
   final String? city;
   final String? picturePath;
 
-  User({
-    this.id,
-    this.name,
-    this.email,
-    this.address,
-    this.houseNumber,
-    this.phoneNumber,
-    this.city,
-    this.picturePath
-  });
+  User(
+      {this.id,
+      this.name,
+      this.email,
+      this.address,
+      this.houseNumber,
+      this.phoneNumber,
+      this.city,
+      this.picturePath});
+
+  User copyWith(
+          {int? id,
+          String? name,
+          String? email,
+          String? address,
+          String? houseNumber,
+          String? phoneNumber,
+          String? city,
+          String? picturePath}) =>
+      User(
+          id: id,
+          name: name,
+          email: email,
+          address: address,
+          houseNumber: houseNumber,
+          phoneNumber: phoneNumber,
+          city: city,
+          picturePath: picturePath);
 
   @override
-  List<Object?> get props => [id, name, email, address, houseNumber, phoneNumber, city, picturePath];
+  List<Object?> get props =>
+      [id, name, email, address, houseNumber, phoneNumber, city, picturePath];
 }
 
 User mockUser = User(
-  id: 1,
-  name: "Chaerul Anwar",
-  email: "chaerulforpc@gmail.com",
-  address: "Jalan Gading Sengon IV",
-  houseNumber: "111",
-  phoneNumber: "+6281224748488",
-  city: "Jakarta Utara",
-  picturePath: "https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg"
-);
+    id: 1,
+    name: "Chaerul Anwar",
+    email: "chaerulforpc@gmail.com",
+    address: "Jalan Gading Sengon IV",
+    houseNumber: "111",
+    phoneNumber: "+6281224748488",
+    city: "Jakarta Utara",
+    picturePath:
+        "https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg");
