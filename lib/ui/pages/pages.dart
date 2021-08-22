@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:foodmarket/models/models.dart';
 import 'package:foodmarket/shared/shared.dart';
 import 'package:foodmarket/ui/widgets/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:dotted_border/dotted_border.dart';

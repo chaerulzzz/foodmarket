@@ -1,6 +1,12 @@
 part of 'pages.dart';
 
 class AddressPage extends StatefulWidget {
+  final User user;
+  final String password;
+  final File? photoFile;
+
+  AddressPage({required this.user, required this.password, this.photoFile});
+
   @override
   _AddressPageState createState() => _AddressPageState();
 }

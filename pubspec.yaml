@@ -35,7 +35,6 @@ dependencies:
   intl: ^0.17.0
   material_design_icons_flutter: ^5.0.5955-rc.1
   supercharged: ^2.0.0
-  universal_html: ^2.0.8
   url_launcher: ^6.0.9
 
 dev_dependencies:
